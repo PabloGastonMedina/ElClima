@@ -80,3 +80,9 @@ input, select, form div{
 .alerta p{
     color: var(--textoBoton);
 }
+
+.actualidad{
+    text-align: center;
+    color: var(--encabezado);
+    font-size: 4rem;
+}

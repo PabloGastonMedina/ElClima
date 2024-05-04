@@ -1,0 +1,66 @@
+:root {
+    --fondo: #0f0e17;;
+    --parrafo: #a7a9be;
+    --textoBoton: #fffffe;
+    --encabezado: #fffffe;
+    --boton:#ff8906;
+    --fuente: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--fuente);
+    background-color: var(--fondo);
+}
+
+h1{
+    margin-top: 1rem;
+    color: var(--encabezado);
+}
+
+.cajaBusqueda{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+}
+
+.cajaBusqueda p {
+    color: var(--parrafo);
+}
+
+form{
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 23%;
+}
+
+
+
+input, select, form div{
+    border: none;
+    width: 100%;
+    margin-bottom: .5rem;
+    height: 3rem;
+}
+
+.boton{
+    color: var(--textoBoton);
+    background-color: var(--boton);
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+.ciudadIngresada, select{
+    background-color:var(--textoBoton);
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <h1>BUSCA EL CLIMA</h1>
+    <div class="cajaBusqueda" >
+        <p>Agrega tu ciudad y pais, el resultado se mostrara aqui</p>
+    </div>
+
+    <form action="#" id="formulario" method="POST">
+        <input type="text" id="ciudad" name="ciudad" placeholder="Escribe tu ciudad" class="ciudadIngresada">
+        <div>
+             <select id="pais">
+                <option selected value="">-- Seleccione --</option>
+                <option value="AR">Argentina</option>
+                <option value="CO">Colombia</option>
+                <option value="CR">Costa Rica</option>
+                <option value="ES">España</option>
+                <option value="US">Estados Unidos</option>
+                <option value="MX">México</option>
+                <option value="PE">Perú</option>
+             </select>
+        </div>
+        <input class="boton" type="submit" value="Obtener Clima">
+    </form>
+
+    <script src="app.js"></script>
+</body>
+</html>

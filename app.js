@@ -46,7 +46,7 @@ function mostrarError(mensaje){
     //Eliminamos alerta despues de 5 segundos
      setTimeout( () => {
         alerta.remove();
-     }, 5000)
+     }, 4000)
     }
 }
 
@@ -55,11 +55,16 @@ function consultarApi(ciudad, pais) {
     const appID = `730cd48c34ae12bfae2230ea9c252e17`;
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${appID}`;
 
+    //Mostramos el spinner de carga
+    Spinner();
+
+
     fetch(url)
     .then(respuesta => respuesta.json()) 
     .then(datos => {
 
         limpiarHTML(); //Limpiamos El HTML previo
+
         if(datos.cod === "404"){
            mostrarError("Ciudad No encontrada");
            return
@@ -73,18 +78,38 @@ function consultarApi(ciudad, pais) {
 
 //Funcion que toma los datos como parametro y muestra el clima en html
 function mostrarClima(datos){
-    const {main : { temp, temp_max, temp_min}} = datos;
+    const {name, main : { temp, temp_max, temp_min}} = datos;
 
     const centigrados = kelvinACentigrados(temp);
+    const min = kelvinACentigrados(temp_min);
+    const max = kelvinACentigrados(temp_max);
 
     console.log(centigrados);
 
-    const actual = document.createElement("h2");
+    const nombreCiudad = document.createElement("h3");
+    nombreCiudad.textContent=  "Clima en: " + name;
+    nombreCiudad.classList.add("actualidad")
+    console.log(nombreCiudad)
+
+    const actual = document.createElement("p");
     actual.innerHTML= `${centigrados} &#8451;`;
     actual.classList.add("actualidad");
 
+    const actualMin = document.createElement("h2");
+    actualMin.innerHTML= `Min: ${min} &#8451;`;
+    actualMin.classList.add("actualidad");
+    
+    const actualMax = document.createElement("h2");
+    actualMax.innerHTML= `Max: ${max} &#8451;`;
+    actualMax.classList.add("actualidad");  
+    
+    const restultadoDiv = document.createElement("div");
+    restultadoDiv.appendChild(nombreCiudad)
+    restultadoDiv.appendChild(actual);
+    restultadoDiv.appendChild(actualMin);
+    restultadoDiv.appendChild(actualMax);
 
-    resultado.appendChild(actual);
+    resultado.appendChild(restultadoDiv);
 }
 
 //Funcion para pasar los numeros de kelvin a centigrados sin coma ni punto.
@@ -98,5 +123,31 @@ function limpiarHTML() {
     while(resultado.firstChild){
         resultado.removeChild(resultado.firstChild);
     }
+}
+
+//Funcion para crear el elemento spinner
+
+function Spinner() {
+
+  limpiarHTML();
+
+  const divSpinner = document.createElement('div');
+  divSpinner.classList.add('sk-fading-circle');
+
+  divSpinner.innerHTML = `
+    <div class="sk-circle1 sk-circle"></div>
+    <div class="sk-circle2 sk-circle"></div>
+    <div class="sk-circle3 sk-circle"></div>
+    <div class="sk-circle4 sk-circle"></div>
+    <div class="sk-circle5 sk-circle"></div>
+    <div class="sk-circle6 sk-circle"></div>
+    <div class="sk-circle7 sk-circle"></div>
+    <div class="sk-circle8 sk-circle"></div>
+    <div class="sk-circle9 sk-circle"></div>
+    <div class="sk-circle10 sk-circle"></div>
+    <div class="sk-circle11 sk-circle"></div>
+    <div class="sk-circle12 sk-circle"></div>
+  `;
+  resultado.appendChild(divSpinner);
 }
    

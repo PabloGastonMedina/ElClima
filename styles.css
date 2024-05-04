@@ -64,3 +64,19 @@ input, select, form div{
 .ciudadIngresada, select{
     background-color:var(--textoBoton);
 }
+
+.alerta{
+    width: 23%;
+    text-align: center;
+    border: 1px solid #e53170;
+    margin-top: 1rem;
+    padding: .5rem;
+}
+
+.alerta h3{
+    color: #e53170;
+}
+
+.alerta p{
+    color: var(--textoBoton);
+}

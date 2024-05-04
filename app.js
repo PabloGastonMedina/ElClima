@@ -17,7 +17,7 @@ function buscarClima (event){
     const pais = document.querySelector("#pais").value;
 
     if(ciudad === "" || pais === "") {
-        mostrarError("Ambos carmpos son obligatorios");
+        mostrarError("Ambos campos son obligatorios");
         return
     }
 
@@ -29,7 +29,7 @@ function mostrarError(mensaje){
 
     //Creamos un alerta
     const alerta = document.createElement("div");
-    alerta.classList.add(".alerta")
+    alerta.classList.add("alerta")
 
     alerta.innerHTML = `
        <strong><h3>ERROR</h3></strong> 
